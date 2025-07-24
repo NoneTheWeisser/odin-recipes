@@ -36,8 +36,9 @@ body {
   align-items: center;
   padding: 40px;
   gap: 40px;
-  max-width: 1000px;
-  margin: 0 auto;
+  /* max-width: 1000px; */
+  margin:0 auto;
+  /* margin-top: 20px; */
 }
 
 .hero-text {
@@ -170,5 +171,4 @@ body {
     align-items: center;
   }
  }
-  /*stack on smaller screen */ */
-
+  /*stack on smaller screen */ 
