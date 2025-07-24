@@ -94,6 +94,7 @@ body {
   }
 }
 
+/* Quote Section */
 .quote {
   background-color: #e5e7eb;
   color: #1f2937;
@@ -124,4 +125,50 @@ body {
   font-weight: bold;
   color: #1f2937;
 }
+
+/* Information/card section */
+.info {
+    padding: 60px 20px;
+    background-color:white;
+    color: #333;
+}
+
+.info h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.info-cards {
+    display:flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.card {
+    max-width: 150px;
+}
+
+.card-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px ;
+    border: 3px solid #3882f6;
+    border-radius: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #555 ;
+}
+
+@media (max-width: 600px) {
+  .info-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+ }
+  /*stack on smaller screen */ */
 
