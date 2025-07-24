@@ -93,3 +93,35 @@ body {
     max-width: 90%;
   }
 }
+
+.quote {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  padding: 50px 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.quote blockquote {
+  max-width: 800px;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.quote blockquote p {
+  margin: 0;
+  /* text-align: center; */
+}
+
+.quote blockquote cite {
+  display: block;
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: right;
+  font-style: normal;
+  font-weight: bold;
+  color: #1f2937;
+}
+
