@@ -106,8 +106,8 @@ body {
 }
 
 .quote blockquote {
-  max-width: 800px;
-  font-size: 28px;
+  max-width: 600px;
+  font-size: 22px;
   font-style: italic;
   font-weight: 300;
   line-height: 1.6;
