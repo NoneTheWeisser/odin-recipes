@@ -100,7 +100,8 @@ body {
 .quote {
   background-color: #e5e7eb;
   color: #1f2937;
-  padding: 50px 30px;
+  padding: 50px 20px;
+  margin-bottom: 15px;
   display: flex;
   justify-content: center;
 }
@@ -128,42 +129,43 @@ body {
   color: #1f2937;
 }
 
+
 /* Information/card section */
 .info {
-    padding: 60px 20px;
-    background-color:white;
-    color: #333;
+  padding: 60px 20px;
+  background-color:white;
+  color: #333;
 }
 
 .info h2 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 40px;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 40px;
 }
 
 .info-cards {
-    display:flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    text-align: center;
+  display:flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .card {
-    max-width: 150px;
+  max-width: 150px;
 }
 
 .card-image {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 10px ;
-    border: 3px solid #3882f6;
-    border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 10px ;
+  border: 3px solid #3882f6;
+  border-radius: 10px;
 }
 
 .card p {
-    font-size: 14px;
-    color: #555 ;
+  font-size: 14px;
+  color: #555 ;
 }
 
 @media (max-width: 600px) {
@@ -171,5 +173,58 @@ body {
     flex-direction: column;
     align-items: center;
   }
- }
-  /*stack on smaller screen */ 
+}
+/*stack on smaller screen */ 
+
+.cta {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.cta-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 40px;
+  background-color: #3882f6;
+  color: white;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.cta-text {
+  flex: 1;
+}
+
+.cta-text h3 {
+  margin: 0px;
+  font-size: 20px
+}
+
+.cta-text p {
+  margin: 5px 0 0 0;
+  font-size: 14px;;
+}
+
+
+
+.footer {
+  background-color: #1f2037;
+  padding: 10px;
+  margin-top: 10px;
+  color: white;
+}
+
+.cta-box button {
+  background-color: transparent;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  flex-shrink: 0;
+}
