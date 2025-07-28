@@ -79,6 +79,22 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .hero-image {
+    margin-top: 20px;
+  }
+
+  .hero-image img {
+    max-width: 90%;
+  }
+}
 
 /* Quote Section */
 .quote {
@@ -152,6 +168,13 @@ body {
   color: #555 ;
 }
 
+@media (max-width: 600px) {
+  .info-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/*stack on smaller screen */ 
 
 .cta {
   display: flex;
@@ -206,51 +229,48 @@ body {
   flex-shrink: 0;
 }
 
-@media (max-width: 600px) {
+/* Hamburger - hidden by default */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Nav links default */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
   .nav-links {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 10px;
-    font-size: 14px;
+    display: none; /* Hidden by default on small screens */
+    flex-direction: column;
+    background-color: #1f2037;
+    position: absolute;
+    top: 70px; /* below header */
+    right: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex; /* Show when JS adds 'show' class */
   }
 
   .nav-links a {
-    margin-left: 10px;
-    white-space: nowrap; /* Prevent wrapping individual link text */
-  }
-
-  .logo img {
-    height: 30px; /* Slightly smaller logo on mobile */
+    color: white;
+    margin: 5px 0;
   }
 
   .header {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-}
-
-
-@media (max-width: 600px) {
-  .info-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-/*stack on smaller screen */ 
-
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .hero-image {
-    margin-top: 20px;
-  }
-
-  .hero-image img {
-    max-width: 90%;
+    position: relative;
   }
 }

@@ -13,6 +13,9 @@
         <div class="logo">
             <img src="img/icons8-cutlery-50.png" alt="Cooking Logo">
             </div>
+            <!-- Hamburger icon for mobile -->
+        <div class ="hamburger" id="hamburger">$#9776;</div>
+        <!-- Navigation links -->
         <nav class="nav-links">
             <a href="recipes/buffalodip.html">Appetizers</a>
             <a href="recipes/zuppa.html">Soups</a>
@@ -86,6 +89,15 @@
   <footer class="footer">
     <p>Copyright © The Odin Project 2021</p>
   </footer>
+
+  <script>
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+</script>
 
 </body>
 </html>
