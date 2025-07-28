@@ -247,27 +247,42 @@ body {
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .hamburger.open {
+    content: "X";
   }
 
   .nav-links {
-    display: none; /* Hidden by default on small screens */
+    display: flex;
     flex-direction: column;
     background-color: #1f2037;
     position: absolute;
-    top: 70px; /* below header */
+    top: 70px;
     right: 20px;
     padding: 10px;
     border-radius: 5px;
     z-index: 999;
+
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
   }
 
   .nav-links.show {
-    display: flex; /* Show when JS adds 'show' class */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   .nav-links a {
     color: white;
-    margin: 5px 0;
+    margin: 10px 0;
   }
 
   .header {
