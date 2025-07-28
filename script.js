@@ -1,55 +1,85 @@
+// DOM ready log
 document.addEventListener("DOMContentLoaded", readyNow);
 
 function readyNow() {
   console.log("DOM is loaded!");
+  
+  // Get base path depending on where the HTML file is
+  const basePath = window.location.pathname.includes("/recipes/") ? "../" : "";
+
+  loadPartial("nav-placeholder", `${basePath}partials/nav.html`);
+  loadPartial("cta-placeholder", `${basePath}partials/cta.html`);
+  loadPartial("footer-placeholder", `${basePath}partials/footer.html`);
 }
 
-// Call them on page load
-document.addEventListener("DOMContentLoaded", () => {
-  loadPartial("nav-placeholder", "../partials/nav.html");
-  loadPartial("cta-placeholder", "../partials/cta.html");
-  loadPartial("footer-placeholder", "../partials/footer.html");
-});
+// Load partials into placeholders
+function loadPartial(id, url) {
+  fetch(url)
+    .then((res) => res.text())
+    .then((html) => {
+      document.getElementById(id).innerHTML = html;
 
+      // Run JS that depends on those elements being present
+      if (id === "nav-placeholder") {
+        setupHamburgerMenu(); // only call hamburger logic here
+      }
+    })
+    .catch((err) => console.error(`Error loading ${url}:`, err));
+}
 
-// Nav bar hamburger
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
-// toggle menu on hamburger icon
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("show");
-  hamburger.classList.toggle("open");
+// Hamburger menu setup
+function setupHamburgerMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
 
-    // switch icon from = to X
-    if (hamburger.classList.contains("open")){
-    hamburger.innerHTML = "&times"; 
-    } else {
-    hamburger.innerHTML = "&#9776;"
-    }
-});
+  if (!hamburger || !navLinks) return;
 
-// close menu when link is clicked
-document.querySelectorAll(".nav-links a").forEach(link => {
+  // Set initial state
+  hamburger.innerHTML = "&#9776;";
+  navLinks.classList.remove("show");
+  hamburger.classList.remove("open");
+
+  // Handle hamburger click
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+    hamburger.classList.toggle("open");
+
+    hamburger.innerHTML = hamburger.classList.contains("open")
+      ? "&times;"
+      : "&#9776;";
+  });
+
+  // Close menu when nav link is clicked
+  document.querySelectorAll(".nav-links a").forEach((link) => {
     link.addEventListener("click", () => {
-        navLinks.classList.remove("show");
-        hamburger.classList.remove("open");
-        hamburger.innerHTML = "&#9776";
+      navLinks.classList.remove("show");
+      hamburger.classList.remove("open");
+      hamburger.innerHTML = "&#9776;";
     });
-});
-
+  });
+}
 
 // Build Recipe Cards
-
 document.addEventListener("DOMContentLoaded", () => {
-  fetch('recipes.json')
-    .then(res => res.json())
-    .then(data => {
-      const container = document.querySelector('.info-cards');
+  console.log("DOM is loaded!");
+
+  // Get base path depending on where the HTML file is
+  const basePath = window.location.pathname.includes("/recipes/") ? "../" : "";
+
+  loadPartial("nav-placeholder", `${basePath}partials/nav.html`);
+  loadPartial("cta-placeholder", `${basePath}partials/cta.html`);
+  loadPartial("footer-placeholder", `${basePath}partials/footer.html`);
+
+  // Load recipe cards
+  fetch("recipes.json")
+    .then((res) => res.json())
+    .then((data) => {
+      const container = document.querySelector(".info-cards");
       container.innerHTML = ""; // Clear existing HTML
 
-      data.forEach(recipe => {
-        const card = document.createElement('div');
-        card.classList.add('card');
+      data.forEach((recipe) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
         card.innerHTML = `
           <a href="${recipe.link}">
@@ -61,30 +91,17 @@ document.addEventListener("DOMContentLoaded", () => {
         container.appendChild(card);
       });
     });
-});
 
-
-// fallback image
-document.addEventListener("error", function (e) {
-  const target = e.target;
-  if (target.tagName === 'IMG') {
-    target.src = "img/default.jpg";
-  }
-}, true);
-
-
-// Load partials into placeholders
-function loadPartial(id, url) {
-  fetch(url)
-    .then((res) => res.text())
-    .then((html) => {
-      document.getElementById(id).innerHTML = html;
-
-      // Run JS that depends on those elements being present
-      if (id === "nav-placeholder") {
-        setupHamburgerMenu(); // assuming this exists in your script.js
+  // Fallback image logic
+  document.addEventListener(
+    "error",
+    function (e) {
+      const target = e.target;
+      if (target.tagName === "IMG") {
+        target.src = "img/default.jpg";
       }
-    })
-    .catch((err) => console.error(`Error loading ${url}:`, err));
-}
+    },
+    true
+  );
+});
 
