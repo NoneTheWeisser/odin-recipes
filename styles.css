@@ -229,7 +229,7 @@ body {
     align-items: center;
   }
   .card {
-    max-width: 90%;
+    max-width: 60%;
     margin-bottom: 20px;
   }
 }
@@ -320,6 +320,7 @@ body {
 .nav-links {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   background-color: #1f2037;
   position: absolute;
   top: 70px;
@@ -332,6 +333,20 @@ body {
   transform: translateY(-20px);
   transition: all 0.3s ease;
   pointer-events: none;
+}
+
+.nav-links a {
+  display: block;
+  padding: 10px 0;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease; 
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1); 
+  border-radius: 5px; 
 }
 
 .nav-links.show {
@@ -357,6 +372,7 @@ body {
   .nav-links {
     display: flex;
     flex-direction: column;
+    gap: 8px;
     background-color: #1f2037;
     position: absolute;
     top: 70px;

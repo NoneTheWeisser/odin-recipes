@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM is loaded!");
 
   // Get base path depending on where the HTML file is
-  const basePath = window.location.pathname.includes("/recipes/") ? "../" : "";
+const basePath = window.location.pathname.includes("/recipes/") ? "../" : "";
 
   // Load partials
   loadPartial("nav-placeholder", `${basePath}partials/nav.html`);
@@ -16,7 +16,8 @@ const container = document.querySelector(".info-cards");
 
 if (container) {
   // Build Recipe Cards
-  fetch("../recipes.json")
+  fetch("recipes.json")
+  // fetch("../recipes.json")
     .then((res) => res.json())
     .then((data) => {
       container.innerHTML = ""; // Clear existing HTML
