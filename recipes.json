@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Buffalo Chicken Dip",
+    "category": "Appetizers",
+    "image": "img/buffdip.jpg",
+    "link": "recipes/buffalodip.html"
+  },
+  {
+    "title": "Zuppa Toscana",
+    "category": "Soups",
+    "image": "img/zuppa.jpg",
+    "link": "recipes/zuppa.html"
+  },
+  {
+    "title": "Garlic Pasta",
+    "category": "Pastas",
+    "image": "img/garlicpasta.jpeg",
+    "link": "recipes/garlicpasta.html"
+  },
+  {
+    "title": "Lemon Orzo Chicken",
+    "category": "Entrées",
+    "image": "img/orzo.jpg",
+    "link": "recipes/orzo.html"
+  },
+  {
+    "title": "Steak and Cheese Taacos",
+    "category": "Entrées",
+    "image": "img/steaktacos.jpg",
+    "link": "recipes/steaktacos.html"
+  }
+]

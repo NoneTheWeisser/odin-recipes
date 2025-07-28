@@ -169,6 +169,7 @@ body {
   font-size: 16px;
   font-weight: 500;
   color: #333;
+  margin-top: -2px;
 }
 
 .card:hover {
@@ -351,4 +352,37 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Fills the area, may crop slightly */
+}
+
+ /* Print button for recipes */
+
+/* Align the recipe title and button */
+.recipe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.print {
+    padding: 10px 10px;
+    background-color: #3882f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.print:hover {
+    background-color: #3882f6;
+}
+
+@media print {
+    body {
+        background: none;
+    }
+    header, footer, nav {
+        display: none;
+    }
 }
