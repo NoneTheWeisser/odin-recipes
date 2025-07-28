@@ -1,19 +1,62 @@
 // DOM ready log
-document.addEventListener("DOMContentLoaded", readyNow);
-
-function readyNow() {
+document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM is loaded!");
-  
+
   // Get base path depending on where the HTML file is
   const basePath = window.location.pathname.includes("/recipes/") ? "../" : "";
 
+  // Load partials
   loadPartial("nav-placeholder", `${basePath}partials/nav.html`);
   loadPartial("cta-placeholder", `${basePath}partials/cta.html`);
   loadPartial("footer-placeholder", `${basePath}partials/footer.html`);
+
+
+// Check if .info-cards exists before building the recipe cards
+const container = document.querySelector(".info-cards");
+
+if (container) {
+  // Build Recipe Cards
+  fetch("../recipes.json")
+    .then((res) => res.json())
+    .then((data) => {
+      container.innerHTML = ""; // Clear existing HTML
+
+      data.forEach((recipe) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        card.innerHTML = `
+          <a href="${recipe.link}">
+            <img class="card-image" src="${recipe.image}" alt="${recipe.category} Image">
+          </a>
+          <p>${recipe.category}</p>
+        `;
+
+        container.appendChild(card);
+      });
+    })
+    .catch((err) => console.error("Error loading recipes.json:", err));
+} else {
+  console.log('.info-cards not found on this page.');
 }
+
+
+  // Fallback image logic
+  document.addEventListener(
+    "error",
+    function (e) {
+      const target = e.target;
+      if (target.tagName === "IMG") {
+        target.src = "img/default.jpg";
+      }
+    },
+    true
+  );
+});
 
 // Load partials into placeholders
 function loadPartial(id, url) {
+  console.log(`Loading partial: ${url}`);  // Debugging line
   fetch(url)
     .then((res) => res.text())
     .then((html) => {
@@ -21,7 +64,7 @@ function loadPartial(id, url) {
 
       // Run JS that depends on those elements being present
       if (id === "nav-placeholder") {
-        setupHamburgerMenu(); // only call hamburger logic here
+        setupHamburgerMenu(); // Only call hamburger logic after nav is loaded
       }
     })
     .catch((err) => console.error(`Error loading ${url}:`, err));
@@ -58,50 +101,3 @@ function setupHamburgerMenu() {
     });
   });
 }
-
-// Build Recipe Cards
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM is loaded!");
-
-  // Get base path depending on where the HTML file is
-  const basePath = window.location.pathname.includes("/recipes/") ? "../" : "";
-
-  loadPartial("nav-placeholder", `${basePath}partials/nav.html`);
-  loadPartial("cta-placeholder", `${basePath}partials/cta.html`);
-  loadPartial("footer-placeholder", `${basePath}partials/footer.html`);
-
-  // Load recipe cards
-  fetch("recipes.json")
-    .then((res) => res.json())
-    .then((data) => {
-      const container = document.querySelector(".info-cards");
-      container.innerHTML = ""; // Clear existing HTML
-
-      data.forEach((recipe) => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-
-        card.innerHTML = `
-          <a href="${recipe.link}">
-            <img class="card-image" src="${recipe.image}" alt="${recipe.category} Image">
-          </a>
-          <p>${recipe.category}</p>
-        `;
-
-        container.appendChild(card);
-      });
-    });
-
-  // Fallback image logic
-  document.addEventListener(
-    "error",
-    function (e) {
-      const target = e.target;
-      if (target.tagName === "IMG") {
-        target.src = "img/default.jpg";
-      }
-    },
-    true
-  );
-});
-
