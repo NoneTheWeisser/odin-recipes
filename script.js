@@ -4,6 +4,14 @@ function readyNow() {
   console.log("DOM is loaded!");
 }
 
+// Call them on page load
+document.addEventListener("DOMContentLoaded", () => {
+  loadPartial("nav-placeholder", "../partials/nav.html");
+  loadPartial("cta-placeholder", "../partials/cta.html");
+  loadPartial("footer-placeholder", "../partials/footer.html");
+});
+
+
 // Nav bar hamburger
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
@@ -63,3 +71,20 @@ document.addEventListener("error", function (e) {
     target.src = "img/default.jpg";
   }
 }, true);
+
+
+// Load partials into placeholders
+function loadPartial(id, url) {
+  fetch(url)
+    .then((res) => res.text())
+    .then((html) => {
+      document.getElementById(id).innerHTML = html;
+
+      // Run JS that depends on those elements being present
+      if (id === "nav-placeholder") {
+        setupHamburgerMenu(); // assuming this exists in your script.js
+      }
+    })
+    .catch((err) => console.error(`Error loading ${url}:`, err));
+}
+
